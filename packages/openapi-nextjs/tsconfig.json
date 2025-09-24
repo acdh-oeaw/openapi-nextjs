@@ -1,0 +1,9 @@
+{
+	"$schema": "https://www.schemastore.org/tsconfig",
+	"extends": "@acdh-oeaw/tsconfig-lib",
+	"compilerOptions": {
+		"declaration": false,
+		"exactOptionalPropertyTypes": false
+	},
+	"exclude": ["dist"]
+}

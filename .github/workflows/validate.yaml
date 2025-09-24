@@ -1,0 +1,68 @@
+name: Validate
+
+concurrency:
+  group: "${{ github.workflow }}-${{ github.ref }}-validate"
+  cancel-in-progress: true
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+
+jobs:
+  validate:
+    name: Validate
+    runs-on: ubuntu-24.04
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22.x
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Format
+        run: pnpm run format:check
+
+      - name: Build package, example apps and example contents
+        run: pnpm run build
+
+      - name: Lint
+        run: pnpm run lint:check
+
+      - name: Typecheck
+        run: pnpm run types:check
+
+      - name: Test
+        run: pnpm run test
+
+      - name: Install playwright browsers
+        run: pnpm run test:e2e:install
+
+      - name: Run e2e tests
+        run: pnpm run test:e2e
+
+  release:
+    name: Release
+    if: ${{ github.event_name == 'push' }}
+    needs: [validate]
+    uses: ./.github/workflows/release.yaml
+    secrets: inherit
+    # https://docs.github.com/en/actions/using-workflows/reusing-workflows#access-and-permissions
+    permissions:
+      contents: write
+      id-token: write
+      pull-requests: write

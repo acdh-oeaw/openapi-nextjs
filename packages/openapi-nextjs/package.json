@@ -1,0 +1,69 @@
+{
+	"name": "@acdh-oeaw/openapi-nextjs",
+	"version": "0.0.0",
+	"license": "MIT",
+	"repository": {
+		"url": "https://github.com/acdh-oeaw/openapi-nextjs"
+	},
+	"type": "module",
+	"engines": {
+		"node": "^22 || ^24"
+	},
+	"devEngines": {
+		"runtime": {
+			"name": "node",
+			"version": ">= 22.18 < 23",
+			"onFail": "download"
+		}
+	},
+	"packageManager": "pnpm@10.17.0",
+	"sideEffects": false,
+	"files": [
+		"dist"
+	],
+	"exports": {
+		".": "./dist/index.js"
+	},
+	"scripts": {
+		"build": "tsdown",
+		"format:check": "prettier . --cache --cache-location ./../../.prettiercache --check --ignore-path ./../../.gitignore  --ignore-path ./../../.prettierignore",
+		"format:fix": "pnpm run format:check --write",
+		"lint:check": "eslint .",
+		"lint:fix": "eslint . --fix",
+		"prepublishOnly": "run-s build",
+		"types:check": "tsc --noEmit",
+		"test": "exit 0"
+	},
+	"dependencies": {
+		"@scalar/openapi-types": "catalog:"
+	},
+	"peerDependencies": {
+		"@valibot/to-json-schema": "1.x",
+		"next": "15.x",
+		"valibot": "1.x"
+	},
+	"devDependencies": {
+		"@acdh-oeaw/eslint-config": "catalog:",
+		"@acdh-oeaw/eslint-config-node": "catalog:",
+		"@acdh-oeaw/tsconfig-lib": "catalog:",
+		"@types/node": "catalog:",
+		"@valibot/to-json-schema": "catalog:",
+		"eslint": "catalog:",
+		"eslint-config-flat-gitignore": "catalog:",
+		"globals": "catalog:",
+		"next": "catalog:",
+		"npm-run-all2": "catalog:",
+		"prettier": "catalog:",
+		"tsdown": "catalog:",
+		"typescript": "catalog:",
+		"valibot": "catalog:"
+	},
+	"lint-staged": {
+		"*.@(js|ts)": [
+			"eslint --fix",
+			"prettier --cache --cache-location ./../../.prettiercache --write"
+		],
+		"*.!(js|ts)": "prettier --cache --cache-location ./../../.prettiercache --ignore-unknown --write"
+	},
+	"prettier": "@acdh-oeaw/prettier-config"
+}

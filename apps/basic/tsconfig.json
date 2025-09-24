@@ -1,0 +1,13 @@
+{
+	"$schema": "https://www.schemastore.org/tsconfig",
+	"extends": "@acdh-oeaw/tsconfig",
+	"compilerOptions": {
+		"jsx": "react-jsx",
+		"paths": {
+			"@/*": ["./*"]
+		},
+		"plugins": [{ "name": "next" }]
+	},
+	"include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+	"exclude": [".next", "content", "node_modules", "public"]
+}
