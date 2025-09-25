@@ -3,7 +3,9 @@ export {
 	type NextRouteHandler,
 	type OpenApiMetadata,
 	type OpenApiNextRouteHandler,
-	toOpenApiResponseSchema,
-	toOpenApiSearchParamsSchema,
 } from "./create-route-handler.ts";
 export { generate, type GenerateOptions } from "./generate.ts";
+export {
+	toOpenApiResponseSchema,
+	toOpenApiSearchParamsSchema,
+} from "./valibot-to-openapi-schema.ts";
