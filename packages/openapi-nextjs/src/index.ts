@@ -6,6 +6,8 @@ export {
 } from "./create-route-handler.ts";
 export { generate, type GenerateOptions } from "./generate.ts";
 export {
+	toOpenApiPathParamsSchema,
 	toOpenApiResponseSchema,
+	toOpenApiSchema,
 	toOpenApiSearchParamsSchema,
-} from "./valibot-to-openapi-schema.ts";
+} from "./to-openapi-schema.ts";
