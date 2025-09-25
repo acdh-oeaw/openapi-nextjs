@@ -1,28 +1,7 @@
 import { createRouteHandler, toOpenApiSchema } from "@acdh-oeaw/openapi-nextjs";
 import * as v from "valibot";
 
-const items = [
-	{ id: "apple", name: "Apple" },
-	{ id: "banana", name: "Banana" },
-	{ id: "cherry", name: "Cherry" },
-	{ id: "date", name: "Date" },
-	{ id: "elderberry", name: "Elderberry" },
-	{ id: "fig", name: "Fig" },
-	{ id: "grape", name: "Grape" },
-	{ id: "honeydew", name: "Honeydew" },
-	{ id: "kiwi", name: "Kiwi" },
-	{ id: "lemon", name: "Lemon" },
-];
-
-const itemSchema = v.object({
-	id: v.pipe(v.string(), v.nonEmpty()),
-	name: v.pipe(v.string(), v.nonEmpty()),
-});
-
-const responseSchema = v.object({
-	total: v.pipe(v.number(), v.integer(), v.minValue(0)),
-	items: v.array(itemSchema),
-});
+import { items, itemSchema } from "@/data/fruits";
 
 const searchParamsSchema = v.object({
 	limit: v.nullish(
@@ -46,6 +25,11 @@ const searchParamsSchema = v.object({
 		),
 		"0",
 	),
+});
+
+const responseSchema = v.object({
+	total: v.pipe(v.number(), v.integer(), v.minValue(0)),
+	items: v.array(itemSchema),
 });
 
 export const GET = createRouteHandler(
