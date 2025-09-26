@@ -13,7 +13,16 @@ export const GET = createRouteHandler(
 	toOpenApiSchema({
 		description: "Retrieves a vegetable resource by id.",
 		params: pathParamsSchema,
-		response: responseSchema,
+		responses: {
+			200: {
+				description: "Successful response",
+				content: {
+					"application/json": {
+						schema: responseSchema,
+					},
+				},
+			},
+		},
 	}),
 	(_request, context: RouteContext<"/api/resources/vegetables/[id]">) => {
 		const params = v.parse(pathParamsSchema, context.params);

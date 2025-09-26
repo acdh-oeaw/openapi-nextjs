@@ -51,7 +51,6 @@
         ],
         "responses": {
           "200": {
-            "description": "Successful response",
             "content": {
               "application/json": {
                 "schema": {
@@ -88,7 +87,8 @@
                   ]
                 }
               }
-            }
+            },
+            "description": "Successful response"
           }
         }
       }
@@ -109,7 +109,6 @@
         ],
         "responses": {
           "200": {
-            "description": "Successful response",
             "content": {
               "application/json": {
                 "schema": {
@@ -130,7 +129,8 @@
                   ]
                 }
               }
-            }
+            },
+            "description": "Successful response"
           }
         }
       }
@@ -174,7 +174,6 @@
         ],
         "responses": {
           "200": {
-            "description": "Successful response",
             "content": {
               "application/json": {
                 "schema": {
@@ -211,7 +210,8 @@
                   ]
                 }
               }
-            }
+            },
+            "description": "Successful response"
           }
         }
       }
@@ -232,7 +232,6 @@
         ],
         "responses": {
           "200": {
-            "description": "Successful response",
             "content": {
               "application/json": {
                 "schema": {
@@ -253,7 +252,8 @@
                   ]
                 }
               }
-            }
+            },
+            "description": "Successful response"
           }
         }
       }

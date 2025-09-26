@@ -1,8 +1,4 @@
-import {
-	createRouteHandler,
-	toOpenApiResponseSchema,
-	toOpenApiSearchParamsSchema,
-} from "@acdh-oeaw/openapi-nextjs";
+import { createRouteHandler, toOpenApiSchema } from "@acdh-oeaw/openapi-nextjs";
 import * as v from "valibot";
 
 import { items, itemSchema } from "@/data/vegetables";
@@ -37,11 +33,20 @@ const responseSchema = v.object({
 });
 
 export const GET = createRouteHandler(
-	{
+	toOpenApiSchema({
 		description: "Retrieves a paginated list of vegetable resources.",
-		searchParams: toOpenApiSearchParamsSchema(searchParamsSchema),
-		response: toOpenApiResponseSchema(responseSchema),
-	},
+		searchParams: searchParamsSchema,
+		responses: {
+			200: {
+				description: "Successful response",
+				content: {
+					"application/json": {
+						schema: responseSchema,
+					},
+				},
+			},
+		},
+	}),
 	(request, _context: RouteContext<"/api/resources/vegetables">) => {
 		const url = new URL(request.url);
 

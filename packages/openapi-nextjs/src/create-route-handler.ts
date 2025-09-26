@@ -13,7 +13,7 @@ export interface OpenApiMetadata {
 	params?: Array<OpenAPIV3_1.ParameterObject>;
 	searchParams?: Array<OpenAPIV3_1.ParameterObject>;
 	body?: OpenAPIV3_1.RequestBodyObject;
-	response: OpenAPIV3_1.SchemaObject;
+	responses: OpenAPIV3_1.ResponsesObject;
 }
 
 export type OpenApiNextRouteHandler<TOpenApiMetadata extends OpenApiMetadata> = NextRouteHandler & {

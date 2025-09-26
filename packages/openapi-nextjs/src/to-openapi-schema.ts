@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 import type { OpenAPIV3_1 } from "@scalar/openapi-types";
 import { toJsonSchema } from "@valibot/to-json-schema";
 import type * as v from "valibot";
@@ -74,51 +76,46 @@ export function toOpenApiResponseSchema<TInput, TOutput, TIssue extends v.BaseIs
 	return jsonSchema;
 }
 
-interface Input<
-	TPathParamsEntries extends v.ObjectEntries,
-	TPathParamsMessage extends v.ErrorMessage<v.ObjectIssue> | undefined,
-	TSearchParamsEntries extends v.ObjectEntries,
-	TSearchParamsMessage extends v.ErrorMessage<v.ObjectIssue> | undefined,
-	TRequestBodyInput,
-	TRequestBodyOutput,
-	TRequestBodyIssue extends v.BaseIssue<unknown>,
-	TResponseInput,
-	TResponseOutput,
-	TResponseIssue extends v.BaseIssue<unknown>,
-> {
-	description?: string;
-	summary?: string;
-	params?: v.ObjectSchema<TPathParamsEntries, TPathParamsMessage>;
-	searchParams?: v.ObjectSchema<TSearchParamsEntries, TSearchParamsMessage>;
-	body?: v.BaseSchema<TRequestBodyInput, TRequestBodyOutput, TRequestBodyIssue>;
-	response: v.BaseSchema<TResponseInput, TResponseOutput, TResponseIssue>;
+export function toOpenApiResponsesSchema(
+	input: Record<
+		number,
+		{
+			description?: string;
+			content: Record<string, { schema: v.BaseSchema<any, any, any> }>;
+		}
+	>,
+): OpenAPIV3_1.ResponsesObject {
+	const responses: OpenAPIV3_1.ResponsesObject = {};
+
+	for (const [status, { content, ...response }] of Object.entries(input)) {
+		const _content: OpenAPIV3_1.ResponseObject = {};
+
+		for (const [type, { schema, ...def }] of Object.entries(content)) {
+			_content[type] = { ...def, schema: toOpenApiResponseSchema(schema) };
+		}
+
+		responses[status] = { ...response, content: _content };
+	}
+
+	return responses;
 }
 
-export function toOpenApiSchema<
-	TPathParamsEntries extends v.ObjectEntries,
-	TPathParamsMessage extends v.ErrorMessage<v.ObjectIssue> | undefined,
-	TSearchParamsEntries extends v.ObjectEntries,
-	TSearchParamsMessage extends v.ErrorMessage<v.ObjectIssue> | undefined,
-	TRequestBodyInput,
-	TRequestBodyOutput,
-	TRequestBodyIssue extends v.BaseIssue<unknown>,
-	TResponseInput,
-	TResponseOutput,
-	TResponseIssue extends v.BaseIssue<unknown>,
->(
-	input: Input<
-		TPathParamsEntries,
-		TPathParamsMessage,
-		TSearchParamsEntries,
-		TSearchParamsMessage,
-		TRequestBodyInput,
-		TRequestBodyOutput,
-		TRequestBodyIssue,
-		TResponseInput,
-		TResponseOutput,
-		TResponseIssue
-	>,
-): OpenApiMetadata {
+interface Input {
+	description?: string;
+	summary?: string;
+	params?: v.ObjectSchema<any, any>;
+	searchParams?: v.ObjectSchema<any, any>;
+	body?: v.BaseSchema<any, any, any>;
+	responses: Record<
+		number,
+		{
+			description?: string;
+			content: Record<string, { schema: v.BaseSchema<any, any, any> }>;
+		}
+	>;
+}
+
+export function toOpenApiSchema(input: Input): OpenApiMetadata {
 	return {
 		description: input.description,
 		summary: input.summary,
@@ -128,6 +125,6 @@ export function toOpenApiSchema<
 				? toOpenApiSearchParamsSchema(input.searchParams)
 				: undefined,
 		body: input.body !== undefined ? toOpenApiRequestBodySchema(input.body) : undefined,
-		response: toOpenApiResponseSchema(input.response),
+		responses: toOpenApiResponsesSchema(input.responses),
 	};
 }

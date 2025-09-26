@@ -36,7 +36,16 @@ export const GET = createRouteHandler(
 	toOpenApiSchema({
 		description: "Retrieves a paginated list of fruit resources.",
 		searchParams: searchParamsSchema,
-		response: responseSchema,
+		responses: {
+			200: {
+				description: "Successful response",
+				content: {
+					"application/json": {
+						schema: responseSchema,
+					},
+				},
+			},
+		},
 	}),
 	(request, _context: RouteContext<"/api/resources/fruits">) => {
 		const url = new URL(request.url);
