@@ -46,7 +46,7 @@ export async function generate(options: GenerateOptions): Promise<OpenAPIV3_1.Do
 					summary: openapi.summary,
 					description: openapi.description,
 					parameters: [...(openapi.params ?? []), ...(openapi.searchParams ?? [])],
-					requestBody: openapi.requestBody,
+					body: openapi.body,
 					responses: {
 						200: {
 							description: "Successful response",

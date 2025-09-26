@@ -90,7 +90,7 @@ interface Input<
 	summary?: string;
 	params?: v.ObjectSchema<TPathParamsEntries, TPathParamsMessage>;
 	searchParams?: v.ObjectSchema<TSearchParamsEntries, TSearchParamsMessage>;
-	requestBody?: v.BaseSchema<TRequestBodyInput, TRequestBodyOutput, TRequestBodyIssue>;
+	body?: v.BaseSchema<TRequestBodyInput, TRequestBodyOutput, TRequestBodyIssue>;
 	response: v.BaseSchema<TResponseInput, TResponseOutput, TResponseIssue>;
 }
 
@@ -127,8 +127,7 @@ export function toOpenApiSchema<
 			input.searchParams !== undefined
 				? toOpenApiSearchParamsSchema(input.searchParams)
 				: undefined,
-		requestBody:
-			input.requestBody !== undefined ? toOpenApiRequestBodySchema(input.requestBody) : undefined,
+		body: input.body !== undefined ? toOpenApiRequestBodySchema(input.body) : undefined,
 		response: toOpenApiResponseSchema(input.response),
 	};
 }
