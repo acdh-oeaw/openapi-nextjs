@@ -34,7 +34,7 @@
 	"dependencies": {
 		"@acdh-oeaw/lib": "catalog:",
 		"@acdh-oeaw/openapi-nextjs": "workspace:^",
-		"@scalar/api-reference-react": "catalog:",
+		"@scalar/nextjs-api-reference": "catalog:",
 		"next": "catalog:",
 		"react": "catalog:",
 		"react-dom": "catalog:",
