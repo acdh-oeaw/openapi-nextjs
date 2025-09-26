@@ -13,7 +13,7 @@ export interface GenerateOptions {
 	servers: Array<OpenAPIV3_1.ServerObject>;
 }
 
-export async function generate(options: GenerateOptions): Promise<void> {
+export async function generate(options: GenerateOptions): Promise<OpenAPIV3_1.Document> {
 	const { directory, info, servers } = options;
 
 	const paths: OpenAPIV3_1.PathsObject = {};
@@ -69,10 +69,5 @@ export async function generate(options: GenerateOptions): Promise<void> {
 		paths,
 	};
 
-	const outputFolder = path.join(process.cwd(), "public");
-	await fs.mkdir(outputFolder, { recursive: true });
-
-	await fs.writeFile(path.join(outputFolder, "openapi.json"), JSON.stringify(openapiDoc, null, 2), {
-		encoding: "utf-8",
-	});
+	return openapiDoc;
 }
