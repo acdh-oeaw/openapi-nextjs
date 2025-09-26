@@ -7,6 +7,9 @@ import type { OpenApiMetadata } from "./create-route-handler.ts";
 
 const methods = new Set(["GET", "POST", "PUT", "PATCH", "DELETE"]);
 
+const routeGroupPathSegmentRegEx = /^\(.+\)$/;
+const dynamicPathSegmentRegEx = /^\[(.+)\]$/;
+
 export interface GenerateOptions {
 	directory: string;
 	info: OpenAPIV3_1.InfoObject;
@@ -31,7 +34,10 @@ export async function generate(options: GenerateOptions): Promise<OpenAPIV3_1.Do
 			.relative(directory, path.dirname(filePath))
 			.split("/")
 			.filter((segment) => {
-				return !segment.startsWith("(") && !segment.endsWith(")");
+				return !routeGroupPathSegmentRegEx.test(segment);
+			})
+			.map((segment) => {
+				return segment.replace(dynamicPathSegmentRegEx, "{$1}");
 			})
 			.join("/")}`;
 

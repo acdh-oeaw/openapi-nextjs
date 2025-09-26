@@ -12,6 +12,7 @@ const responseSchema = itemSchema;
 export const GET = createRouteHandler(
 	toOpenApiSchema({
 		description: "Retrieves a fruit resource by id.",
+		params: pathParamsSchema,
 		response: responseSchema,
 	}),
 	(_request, context: RouteContext<"/api/resources/fruits/[id]">) => {
