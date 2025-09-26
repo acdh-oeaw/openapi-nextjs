@@ -45,6 +45,7 @@ export async function generate(options: GenerateOptions): Promise<OpenAPIV3_1.Do
 				paths[apiPath][method] = {
 					summary: openapi.summary,
 					description: openapi.description,
+					tags: openapi.tags,
 					parameters: [...(openapi.params ?? []), ...(openapi.searchParams ?? [])],
 					body: openapi.body,
 					responses: {

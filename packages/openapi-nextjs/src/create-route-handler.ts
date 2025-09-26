@@ -9,6 +9,7 @@ export type NextRouteHandler = (request: NextRequest, context: any) => MaybeProm
 export interface OpenApiMetadata {
 	description?: string;
 	summary?: string;
+	tags?: Array<string>;
 	params?: Array<OpenAPIV3_1.ParameterObject>;
 	searchParams?: Array<OpenAPIV3_1.ParameterObject>;
 	body?: OpenAPIV3_1.RequestBodyObject;
