@@ -6,14 +6,6 @@
 	"engines": {
 		"node": "^22 || ^24"
 	},
-	"devEngines": {
-		"runtime": {
-			"name": "node",
-			"version": ">= 22.18 < 23",
-			"onFail": "download"
-		}
-	},
-	"packageManager": "pnpm@10.17.0",
 	"scripts": {
 		"app:build": "next build",
 		"app:dev": "next dev --turbopack",
@@ -59,7 +51,6 @@
 		"eslint-config-flat-gitignore": "catalog:",
 		"globals": "catalog:",
 		"is-in-ci": "catalog:",
-		"node": "catalog:",
 		"npm-run-all2": "catalog:",
 		"prettier": "catalog:",
 		"tailwindcss": "catalog:",

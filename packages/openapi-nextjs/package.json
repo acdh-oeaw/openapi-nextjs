@@ -9,14 +9,6 @@
 	"engines": {
 		"node": "^22 || ^24"
 	},
-	"devEngines": {
-		"runtime": {
-			"name": "node",
-			"version": ">= 22.18 < 23",
-			"onFail": "download"
-		}
-	},
-	"packageManager": "pnpm@10.17.0",
 	"sideEffects": false,
 	"files": [
 		"dist"
@@ -46,6 +38,7 @@
 		"@acdh-oeaw/eslint-config": "catalog:",
 		"@acdh-oeaw/eslint-config-node": "catalog:",
 		"@acdh-oeaw/tsconfig-lib": "catalog:",
+		"@arethetypeswrong/core": "catalog:",
 		"@types/node": "catalog:",
 		"@valibot/to-json-schema": "catalog:",
 		"eslint": "catalog:",

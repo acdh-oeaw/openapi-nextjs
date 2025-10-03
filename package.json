@@ -9,7 +9,7 @@
 			"onFail": "download"
 		}
 	},
-	"packageManager": "pnpm@10.17.1",
+	"packageManager": "pnpm@10.18.0",
 	"scripts": {
 		"build": "turbo run build",
 		"ci:release": "changeset publish",
@@ -31,6 +31,7 @@
 		"@playwright/test": "catalog:",
 		"is-in-ci": "catalog:",
 		"lint-staged": "catalog:",
+		"node": "catalog:",
 		"npm-run-all2": "catalog:",
 		"prettier": "catalog:",
 		"simple-git-hooks": "catalog:",
