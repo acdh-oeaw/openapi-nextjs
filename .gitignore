@@ -54,4 +54,4 @@ playwright-report/
 test-results/
 
 # openapi
-public/openapi.*
+**/public/openapi.json
