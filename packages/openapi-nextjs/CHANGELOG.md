@@ -1,5 +1,14 @@
 # @acdh-oeaw/openapi-nextjs
 
+## 0.0.2
+
+### Patch Changes
+
+- [#3](https://github.com/acdh-oeaw/openapi-nextjs/pull/3)
+  [`85a19d9`](https://github.com/acdh-oeaw/openapi-nextjs/commit/85a19d98f9f6966418343b07b251eb6b137006c6)
+  Thanks [@stefanprobst](https://github.com/stefanprobst)! - allow next.js v16 peer dependency,
+  update deps
+
 ## 0.0.1
 
 ### Patch Changes
