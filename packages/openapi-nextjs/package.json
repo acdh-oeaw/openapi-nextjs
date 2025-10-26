@@ -31,7 +31,7 @@
 	},
 	"peerDependencies": {
 		"@valibot/to-json-schema": "1.x",
-		"next": "15.x",
+		"next": "15.x || 16.x",
 		"valibot": "1.x"
 	},
 	"devDependencies": {
