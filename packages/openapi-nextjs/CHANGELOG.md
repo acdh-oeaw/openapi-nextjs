@@ -1,5 +1,13 @@
 # @acdh-oeaw/openapi-nextjs
 
+## 0.0.3
+
+### Patch Changes
+
+- [#5](https://github.com/acdh-oeaw/openapi-nextjs/pull/5)
+  [`dad2502`](https://github.com/acdh-oeaw/openapi-nextjs/commit/dad2502d758686fc35e577e14de7085b0aff89fb)
+  Thanks [@stefanprobst](https://github.com/stefanprobst)! - update deps
+
 ## 0.0.2
 
 ### Patch Changes
