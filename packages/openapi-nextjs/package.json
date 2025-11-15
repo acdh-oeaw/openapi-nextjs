@@ -14,7 +14,7 @@
 		"dist"
 	],
 	"exports": {
-		".": "./dist/index.js"
+		".": "./dist/index.mjs"
 	},
 	"scripts": {
 		"build": "tsdown",
