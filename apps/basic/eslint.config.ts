@@ -31,7 +31,7 @@ export default defineConfig(
 			"@typescript-eslint/require-array-sort-compare": "error",
 			"@typescript-eslint/strict-boolean-expressions": "error",
 			"react/jsx-sort-props": ["error", { reservedFirst: true }],
-			"react-x/prefer-read-only-props": "error",
+			"@eslint-react/prefer-read-only-props": "error",
 		},
 	},
 	{
