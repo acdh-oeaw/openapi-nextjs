@@ -9,7 +9,7 @@
 			"onFail": "download"
 		}
 	},
-	"packageManager": "pnpm@10.22.0",
+	"packageManager": "pnpm@10.24.0",
 	"scripts": {
 		"build": "turbo run build",
 		"ci:release": "changeset publish",
