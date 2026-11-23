@@ -28,7 +28,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 22.x
+          node-version: 26.x
           cache: pnpm
 
       # Ensure `npm` 11.5.1 or later is installed (which is needed for trusted publishing).
@@ -38,7 +38,7 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
         env:
-          SKIP_INSTALL_SIMPLE_GIT_HOOKS: 1
+          LEFTHOOK: "0"
 
       - name: Create release pull request or publish to NPM
         uses: changesets/action@v1

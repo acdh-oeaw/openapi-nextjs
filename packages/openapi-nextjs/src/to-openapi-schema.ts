@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+/* oxlint-disable typescript/no-explicit-any */
 
 import type { OpenAPIV3_1 } from "@scalar/openapi-types";
 import { toJsonSchema } from "@valibot/to-json-schema";
@@ -20,10 +20,10 @@ export function toOpenApiPathParamsSchema<
 		params.push({
 			name,
 			in: "path",
-			// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+			// oxlint-disable-next-line typescript/no-unsafe-assignment
 			description,
 			required: Boolean(jsonSchema.required?.includes(name)),
-			// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+			// oxlint-disable-next-line typescript/no-unsafe-assignment
 			schema: property,
 		});
 	}
@@ -45,10 +45,10 @@ export function toOpenApiSearchParamsSchema<
 		searchParams.push({
 			name,
 			in: "query",
-			// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+			// oxlint-disable-next-line typescript/no-unsafe-assignment
 			description,
 			required: Boolean(jsonSchema.required?.includes(name)),
-			// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+			// oxlint-disable-next-line typescript/no-unsafe-assignment
 			schema: property,
 		});
 	}

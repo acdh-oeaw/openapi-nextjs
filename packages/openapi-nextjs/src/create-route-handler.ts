@@ -3,7 +3,7 @@ import type { NextRequest } from "next/server.js";
 
 type MaybePromise<T> = T | Promise<T>;
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
+// oxlint-disable-next-line typescript/no-explicit-any
 export type NextRouteHandler = (request: NextRequest, context: any) => MaybePromise<Response>;
 
 export interface OpenApiMetadata {

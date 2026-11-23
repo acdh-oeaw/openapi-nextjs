@@ -16,9 +16,11 @@
 		"format:check": {},
 		"format:fix": {},
 		"lint:check": {
+			"inputs": ["$TURBO_DEFAULT$", "$TURBO_ROOT$/.oxlintrc.json"],
 			"dependsOn": ["^lint:check"]
 		},
 		"lint:fix": {
+			"inputs": ["$TURBO_DEFAULT$", "$TURBO_ROOT$/.oxlintrc.json"],
 			"dependsOn": ["^lint:fix"]
 		},
 		"start": {

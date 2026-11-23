@@ -4,7 +4,7 @@
 	"editor.codeActionsOnSave": {
 		"source.fixAll": "explicit"
 	},
-	"editor.defaultFormatter": "esbenp.prettier-vscode",
+	"editor.defaultFormatter": "oxc.oxc-vscode",
 	"editor.detectIndentation": false,
 	"editor.formatOnSave": true,
 	"editor.inlayHints.enabled": "offUnlessPressed",
@@ -14,9 +14,6 @@
 	},
 	"editor.rulers": [100],
 	"editor.stickyScroll.enabled": true,
-	"eslint.enable": true,
-	"eslint.validate": ["javascript", "typescript", "typescriptreact"],
-	"eslint.workingDirectories": [{ "mode": "auto" }],
 	"files.associations": {
 		"*.css": "tailwindcss"
 	},
@@ -37,7 +34,6 @@
 	"i18n-ally.tabStyle": "tab",
 	"less.validate": false,
 	"mdx.server.enable": true,
-	"prettier.ignorePath": ".gitignore",
 	"scss.validate": false,
 	"search.exclude": {
 		".next/**": true
@@ -48,7 +44,6 @@
 	"tailwindCSS.classFunctions": ["cn", "styles"],
 	"tailwindCSS.validate": true,
 	"terminal.integrated.enablePersistentSessions": false,
-	"typescript.enablePromptUseWorkspaceTsdk": true,
 	"typescript.inlayHints.parameterNames.enabled": "all",
 	"typescript.preferences.autoImportFileExcludePatterns": [
 		"lucide-react",
@@ -57,7 +52,6 @@
 	],
 	"typescript.preferences.importModuleSpecifier": "non-relative",
 	"typescript.preferences.preferTypeOnlyAutoImports": true,
-	"typescript.tsdk": "node_modules/typescript/lib",
 	"workbench.editor.customLabels.patterns": {
 		"**/app/**/error.tsx": "${dirname} - error",
 		"**/app/**/forbidden.tsx": "${dirname} - forbidden",
@@ -76,5 +70,8 @@
 	"[mdx]": {
 		"editor.formatOnSave": false,
 		"editor.wordWrap": "on"
-	}
+	},
+	"oxc.enable": true,
+	"js/ts.experimental.useTsgo": true,
+	"js/ts.tsdk.path": "./node_modules/typescript"
 }

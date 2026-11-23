@@ -21,7 +21,6 @@ export async function generate(options: GenerateOptions): Promise<OpenAPIV3_1.Do
 
 	const paths: OpenAPIV3_1.PathsObject = {};
 
-	// eslint-disable-next-line n/no-unsupported-features/node-builtins
 	for await (const entry of fs.glob("**/route.ts", {
 		cwd: directory,
 		withFileTypes: true,
