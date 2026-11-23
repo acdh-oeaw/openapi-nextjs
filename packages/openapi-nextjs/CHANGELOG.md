@@ -1,5 +1,22 @@
 # @acdh-oeaw/openapi-nextjs
 
+## 0.0.4
+
+### Patch Changes
+
+- [#9](https://github.com/acdh-oeaw/openapi-nextjs/pull/9)
+  [`07817bb`](https://github.com/acdh-oeaw/openapi-nextjs/commit/07817bb81b9484c303fd8b57ff797592c298202f)
+  Thanks [@stefanprobst](https://github.com/stefanprobst)! - Update the development toolchain to
+  TypeScript 7, Oxfmt, Oxlint, and Lefthook, and update Changesets.
+
+- [#9](https://github.com/acdh-oeaw/openapi-nextjs/pull/9)
+  [`07817bb`](https://github.com/acdh-oeaw/openapi-nextjs/commit/07817bb81b9484c303fd8b57ff797592c298202f)
+  Thanks [@stefanprobst](https://github.com/stefanprobst)! - Add support for Node.js 26.
+
+- [#9](https://github.com/acdh-oeaw/openapi-nextjs/pull/9)
+  [`07817bb`](https://github.com/acdh-oeaw/openapi-nextjs/commit/07817bb81b9484c303fd8b57ff797592c298202f)
+  Thanks [@stefanprobst](https://github.com/stefanprobst)! - Update Scalar OpenAPI types.
+
 ## 0.0.3
 
 ### Patch Changes
