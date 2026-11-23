@@ -4,18 +4,18 @@
 	"license": "MIT",
 	"type": "module",
 	"engines": {
-		"node": "^22 || ^24"
+		"node": "^22 || ^24 || ^26"
 	},
 	"scripts": {
 		"app:build": "next build",
 		"app:dev": "next dev --turbopack",
 		"build": "run-s generate:api-docs app:build",
 		"dev": "run-s app:dev",
-		"format:check": "prettier . --cache --cache-location ./../../.prettiercache --check --ignore-path ./../../.gitignore  --ignore-path ./../../.prettierignore",
-		"format:fix": "pnpm run format:check --write",
+		"format:check": "oxfmt --check .",
+		"format:fix": "oxfmt --write .",
 		"generate:api-docs": "NODE_DEBUG=openapi-nextjs tsx ./scripts/generate-api-docs.ts",
-		"lint:check": "eslint .",
-		"lint:fix": "eslint . --fix",
+		"lint:check": "oxlint --config ../../.oxlintrc.json --type-aware --deny-warnings .",
+		"lint:fix": "pnpm run lint:check --fix",
 		"prepare": "run-s types:prepare",
 		"start": "next start",
 		"test:e2e": "PORT=3001 playwright test",
@@ -33,41 +33,24 @@
 		"valibot": "catalog:"
 	},
 	"devDependencies": {
-		"@acdh-oeaw/eslint-config": "catalog:",
-		"@acdh-oeaw/eslint-config-next": "catalog:",
-		"@acdh-oeaw/eslint-config-node": "catalog:",
-		"@acdh-oeaw/eslint-config-playwright": "catalog:",
-		"@acdh-oeaw/eslint-config-react": "catalog:",
-		"@acdh-oeaw/eslint-config-tailwindcss": "catalog:",
-		"@acdh-oeaw/prettier-config": "catalog:",
 		"@acdh-oeaw/tsconfig": "catalog:",
-		"@next/eslint-plugin-next": "catalog:",
 		"@playwright/test": "catalog:",
 		"@tailwindcss/postcss": "catalog:",
 		"@types/node": "catalog:",
 		"@types/react": "catalog:",
 		"@types/react-dom": "catalog:",
-		"eslint": "catalog:",
-		"eslint-config-flat-gitignore": "catalog:",
-		"globals": "catalog:",
 		"is-in-ci": "catalog:",
 		"npm-run-all2": "catalog:",
-		"prettier": "catalog:",
+		"oxfmt": "catalog:",
+		"oxlint": "catalog:",
+		"oxlint-tsgolint": "catalog:",
 		"tailwindcss": "catalog:",
 		"tsx": "catalog:",
 		"typescript": "catalog:"
-	},
-	"lint-staged": {
-		"*.@(js|ts|tsx)": [
-			"eslint --fix",
-			"prettier --cache --cache-location ./../../.prettiercache --write"
-		],
-		"*.!(js|ts|tsx)": "prettier --cache --cache-location ./../../.prettiercache --ignore-unknown --write"
 	},
 	"postcss": {
 		"plugins": {
 			"@tailwindcss/postcss": {}
 		}
-	},
-	"prettier": "@acdh-oeaw/prettier-config"
+	}
 }

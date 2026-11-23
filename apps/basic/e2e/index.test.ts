@@ -11,14 +11,13 @@ test("should display api docs", async ({ page }) => {
 test("should display endpoint definitions", async ({ page }) => {
 	await page.goto("/api-docs");
 
-	await expect(
-		page.getByRole("region", { name: "/api/resources/vegetables" }).first(),
-	).toBeVisible();
-	await expect(
-		page.getByRole("region", { name: "/api/resources/vegetables/{id}" }).first(),
-	).toBeVisible();
-	await expect(page.getByRole("region", { name: "/api/resources/fruits" }).first()).toBeVisible();
-	await expect(
-		page.getByRole("region", { name: "/api/resources/fruits/{id}" }).first(),
-	).toBeVisible();
+	for (const endpoint of [
+		"/api/resources/vegetables",
+		"/api/resources/vegetables/{id}",
+		"/api/resources/fruits",
+		"/api/resources/fruits/{id}",
+	]) {
+		await page.getByRole("link", { name: `${endpoint} HTTP Method: GET`, exact: true }).click();
+		await expect(page.getByRole("region", { name: endpoint, exact: true }).first()).toBeVisible();
+	}
 });

@@ -1,0 +1,11 @@
+glob_matcher: doublestar
+
+pre-commit:
+  jobs:
+    - name: lint
+      glob: "**/*.{js,jsx,mjs,cjs,ts,tsx,mts,cts}"
+      run: pnpm exec oxlint --type-aware --deny-warnings --fix -- {staged_files}
+      stage_fixed: true
+    - name: format
+      run: pnpm exec oxfmt --write --no-error-on-unmatched-pattern -- {staged_files}
+      stage_fixed: true

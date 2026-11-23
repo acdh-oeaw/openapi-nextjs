@@ -7,7 +7,7 @@
 	},
 	"type": "module",
 	"engines": {
-		"node": "^22 || ^24"
+		"node": "^22 || ^24 || ^26"
 	},
 	"sideEffects": false,
 	"files": [
@@ -18,10 +18,10 @@
 	},
 	"scripts": {
 		"build": "tsdown",
-		"format:check": "prettier . --cache --cache-location ./../../.prettiercache --check --ignore-path ./../../.gitignore  --ignore-path ./../../.prettierignore",
-		"format:fix": "pnpm run format:check --write",
-		"lint:check": "eslint .",
-		"lint:fix": "eslint . --fix",
+		"format:check": "oxfmt --check .",
+		"format:fix": "oxfmt --write .",
+		"lint:check": "oxlint --config ../../.oxlintrc.json --type-aware --deny-warnings .",
+		"lint:fix": "pnpm run lint:check --fix",
 		"prepublishOnly": "run-s build",
 		"types:check": "tsc --noEmit",
 		"test": "exit 0"
@@ -35,28 +35,18 @@
 		"valibot": "1.x"
 	},
 	"devDependencies": {
-		"@acdh-oeaw/eslint-config": "catalog:",
-		"@acdh-oeaw/eslint-config-node": "catalog:",
 		"@acdh-oeaw/tsconfig-lib": "catalog:",
 		"@arethetypeswrong/core": "catalog:",
+		"@types/json-schema": "catalog:",
 		"@types/node": "catalog:",
 		"@valibot/to-json-schema": "catalog:",
-		"eslint": "catalog:",
-		"eslint-config-flat-gitignore": "catalog:",
-		"globals": "catalog:",
 		"next": "catalog:",
 		"npm-run-all2": "catalog:",
-		"prettier": "catalog:",
+		"oxfmt": "catalog:",
+		"oxlint": "catalog:",
+		"oxlint-tsgolint": "catalog:",
 		"tsdown": "catalog:",
 		"typescript": "catalog:",
 		"valibot": "catalog:"
-	},
-	"lint-staged": {
-		"*.@(js|ts)": [
-			"eslint --fix",
-			"prettier --cache --cache-location ./../../.prettiercache --write"
-		],
-		"*.!(js|ts)": "prettier --cache --cache-location ./../../.prettiercache --ignore-unknown --write"
-	},
-	"prettier": "@acdh-oeaw/prettier-config"
+	}
 }

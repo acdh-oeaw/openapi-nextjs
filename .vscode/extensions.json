@@ -1,15 +1,15 @@
 {
 	"recommendations": [
 		"bradlc.vscode-tailwindcss",
-		"dbaeumer.vscode-eslint",
 		"editorconfig.editorconfig",
-		"esbenp.prettier-vscode",
 		"github.vscode-github-actions",
 		"lokalise.i18n-ally",
 		"mikestead.dotenv",
 		"ms-playwright.playwright",
 		"stylelint.vscode-stylelint",
 		"unifiedjs.vscode-mdx",
-		"vercel.turbo-vsc"
+		"vercel.turbo-vsc",
+		"oxc.oxc-vscode",
+		"typescriptteam.native-preview"
 	]
 }
